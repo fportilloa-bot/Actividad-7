@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Caja Registradora - Restaurante</title>
+
+        <link rel="stylesheet" href="estilos.css">
+    </head>
+    <body>
+
+        <!-- MODIFICACIÓN 1: emojis flotantes de fondo -->
+        <div class="flotantes" aria-hidden="true">
+            <span style="--x:5%;  --d:14s; --t:0s;">🍕</span>
+            <span style="--x:12%; --d:22s; --t:7s;">🍝</span>
+            <span style="--x:18%; --d:18s; --t:3s;">🍔</span>
+            <span style="--x:32%; --d:16s; --t:6s;">🌮</span>
+            <span style="--x:46%; --d:20s; --t:1s;">🥗</span>
+            <span style="--x:60%; --d:15s; --t:4s;">🍟</span>
+            <span style="--x:68%; --d:16s; --t:9s;">🍣</span>
+            <span style="--x:74%; --d:19s; --t:8s;">🍦</span>
+            <span style="--x:82%; --d:18s; --t:3s;">🌭</span>
+            <span style="--x:88%; --d:17s; --t:2s;">🥤</span>
+            <span style="--x:95%; --d:21s; --t:5s;">🧀</span>
+        </div>
+
+        <main class="contenedor">
+
+            <!-- MODIFICACIÓN 3: botón de modo oscuro -->
+            <button type="button" id="btnTema" class="btn-tema" title="Cambiar tema">🌙</button>
+
+            <!-- NUEVO: cabecera tipo póster -->
+            <header class="hero">
+                <p class="etiqueta">🔥 Abierto hoy · Sabor sin límites</p>
+                <h1>
+                    <span class="emoji-titulo">🍽️</span>
+                    Restaurante
+                    <span class="resaltado">Delicioso</span>
+                </h1>
+                <p class="subtitulo">Elige, personaliza y mira tu total al instante</p>
+            </header>
+
+            <!-- NUEVO: cinta de letrero que se desplaza -->
+            <div class="ticker" aria-hidden="true">
+                <div class="ticker-track">
+                    <div class="ticker-grupo">
+                        <span>🍕 PIZZA</span><span>🍔 HAMBURGUESA</span><span>🌮 TACOS</span><span>🥗 ENSALADA</span>
+                        <span>🍝 PASTA</span><span>🌭 HOT DOG</span><span>🍣 SUSHI</span><span>🍗 POLLO</span>
+                    </div>
+                    <div class="ticker-grupo">
+                        <span>🍕 PIZZA</span><span>🍔 HAMBURGUESA</span><span>🌮 TACOS</span><span>🥗 ENSALADA</span>
+                        <span>🍝 PASTA</span><span>🌭 HOT DOG</span><span>🍣 SUSHI</span><span>🍗 POLLO</span>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Ordena tu Menú</h2>
+
+            <form id="formularioRestaurante">
+
+                <div class="seccion">
+                    <label for="nombreCliente">Nombre del Cliente:</label>
+                    <input type="text" id="nombreCliente" placeholder="Ej. Juan Pérez" maxlength="100" required>
+                </div>
+
+                <div class="seccion">
+                    <label for="platoPrincipal">Elige tu Plato Principal:</label>
+
+                    <!-- MODIFICACIÓN 2: tarjetas visuales de platos (8 platillos) -->
+                    <div class="platos-visual">
+                        <button type="button" class="plato-card" data-plato="pizza">
+                            <span class="plato-emoji">🍕</span>
+                            <strong>Pizza Familiar</strong>
+                            <small>$12.00</small>
+                        </button>
+                        <button type="button" class="plato-card" data-plato="hamburguesa">
+                            <span class="plato-emoji">🍔</span>
+                            <strong>Hamburguesa</strong>
+                            <small>$7.50</small>
+                        </button>
+                        <button type="button" class="plato-card" data-plato="tacos">
+                            <span class="plato-emoji">🌮</span>
+                            <strong>Tacos</strong>
+                            <small>$6.00</small>
+                        </button>
+                        <button type="button" class="plato-card" data-plato="ensalada">
+                            <span class="plato-emoji">🥗</span>
+                            <strong>Ensalada César</strong>
+                            <small>$5.50</small>
+                        </button>
+                        <button type="button" class="plato-card" data-plato="pasta">
+                            <span class="plato-emoji">🍝</span>
+                            <strong>Pasta Alfredo</strong>
+                            <small>$9.50</small>
+                        </button>
+                        <button type="button" class="plato-card" data-plato="hotdog">
+                            <span class="plato-emoji">🌭</span>
+                            <strong>Hot Dog</strong>
+                            <small>$4.50</small>
+                        </button>
+                        <button type="button" class="plato-card" data-plato="sushi">
+                            <span class="plato-emoji">🍣</span>
+                            <strong>Sushi Roll</strong>
+                            <small>$11.00</small>
+                        </button>
+                        <button type="button" class="plato-card" data-plato="pollo">
+                            <span class="plato-emoji">🍗</span>
+                            <strong>Pollo Frito</strong>
+                            <small>$8.00</small>
+                        </button>
+                    </div>
+
+                    <select id="platoPrincipal" required>
+                        <option value="">-- Selecciona un plato --</option>
+                        <option value="pizza">Pizza Familiar - $12.00</option>
+                        <option value="hamburguesa">Hamburguesa - $7.50</option>
+                        <option value="tacos">Orden de Tacos - $6.00</option>
+                        <option value="ensalada">Ensalada César - $5.50</option>
+                        <option value="pasta">Pasta Alfredo - $9.50</option>
+                        <option value="hotdog">Hot Dog - $4.50</option>
+                        <option value="sushi">Sushi Roll - $11.00</option>
+                        <option value="pollo">Pollo Frito - $8.00</option>
+                    </select>
+                </div>
+
+                <div class="seccion">
+                    <label for="cantidadPlato">Cantidad de platos:</label>
+                    <input type="number" id="cantidadPlato" min="1" max="20" value="1" required>
+                </div>
+
+                <div class="seccion">
+                    <label>Tamaño de la Bebida:</label>
+                    <div class="opciones-inline">
+                        <div class="opcion">
+                            <input type="radio" id="bebidaP" name="tamanoBebida" value="pequena" checked>
+                            <label for="bebidaP">Pequeña ($1.00)</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="bebidaM" name="tamanoBebida" value="mediana">
+                            <label for="bebidaM">Mediana ($1.50)</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="bebidaG" name="tamanoBebida" value="grande">
+                            <label for="bebidaG">Grande ($2.00)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seccion">
+                    <label>¿Deseas agregar extras?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="extraPapas">
+                            <label for="extraPapas">Papas Fritas (+$2.50)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="extraQueso">
+                            <label for="extraQueso">Extra Queso (+$1.50)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="extraTocino">
+                            <label for="extraTocino">Tocino (+$2.00)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="extraHelado">
+                            <label for="extraHelado">Helado (+$1.80)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="seccion">
+                    <label for="propina">Propina:</label>
+                    <select id="propina">
+                        <option value="0">Sin propina</option>
+                        <option value="10">10%</option>
+                        <option value="15">15%</option>
+                    </select>
+                </div>
+
+                <div class="seccion">
+                    <label for="notas">Notas Especiales o Alergias:</label>
+                    <textarea id="notas" rows="4" placeholder="Ej. Sin cebolla, salsa aparte..."></textarea>
+                </div>
+
+                <!-- MODIFICACIÓN 3: total estimado en vivo -->
+                <div class="estimado">
+                    <span>🧾 Total estimado (con propina)</span>
+                    <strong id="totalEstimado">$0.00</strong>
+                </div>
+
+                <button type="submit" class="btn-verde btn-guardar">Calcular y Guardar Pedido</button>
+
+            </form>
+
+            <div id="reciboRespuesta" role="status"></div>
+
+            <div id="botonesRecibo" class="botones-admin">
+                <button type="button" id="btnWordRecibo" class="btn-azul">📄 Descargar recibo en Word</button>
+                <button type="button" id="btnImprimir" class="btn-verde">🖨️ Imprimir recibo</button>
+            </div>
+
+            <section class="panel-admin">
+
+                <h2>Administración de Ventas</h2>
+
+                <div class="botones-admin">
+                    <button type="button" id="btnVerHistorial" class="btn-azul">Ver Historial</button>
+                    <button type="button" id="btnWordHistorial" class="btn-azul">📄 Exportar historial a Word</button>
+                    <button type="button" id="btnBorrarHistorial" class="btn-rojo">Limpiar Base de Datos</button>
+                </div>
+
+                <div class="buscador">
+                    <label for="buscarCliente">🔍 Buscar pedidos por cliente:</label>
+                    <input
+                        type="text"
+                        id="buscarCliente"
+                        placeholder="Escribe un nombre..."
+                        maxlength="100"
+                        autocomplete="off"
+                        >
+                </div>
+
+                <div id="tablaHistorial"></div>
+
+            </section>
+
+        </main>
+
+        <script src="programa.js"></script>
+
+    </body>
+</html>
